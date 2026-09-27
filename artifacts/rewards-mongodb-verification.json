@@ -1,0 +1,12 @@
+{
+  "mode": "isolated real MongoDB transactions with synthetic rewards and RPC adapter",
+  "concurrentAttempts": 8,
+  "completedAttempts": 3,
+  "fundedTasks": 1,
+  "committedUnits": 1000000,
+  "singlePayoutId": "0e53725b-7575-4d04-b450-f28ef121b5e9",
+  "signCountAcrossRestart": 1,
+  "payoutStatus": "unknown",
+  "realSolanaTransfer": false,
+  "cleanup": "isolated verification collection removed"
+}

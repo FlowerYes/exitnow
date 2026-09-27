@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-27T01:33:08.205497+00:00",
+  "title": "Design System: ExitNow",
+  "extensions": {
+    "typographyMeta": {
+      "display": {
+        "displayName": "Pitch display",
+        "purpose": "Editorial hero copy; planner has a separate compact hierarchy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "conversation",
+        "value": "0 8px 25px #0000000a",
+        "purpose": "Subtle depth for illustrative speech bubbles."
+      },
+      {
+        "name": "mode-selection",
+        "value": "0 2px 5px #172c420b",
+        "purpose": "Selected planner mode."
+      }
+    ],
+    "motion": [
+      {
+        "name": "manual-train-preview",
+        "value": "4s power2.inOut",
+        "purpose": "Temporary preview; completion restores scroll ownership."
+      },
+      {
+        "name": "reveal",
+        "value": ".8s",
+        "purpose": "One-time pitch section entrance; omitted for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "pitch-mobile",
+        "value": "650px"
+      },
+      {
+        "name": "planner-mobile",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "1000px"
+      },
+      {
+        "name": "planner-wide",
+        "value": "1400px"
+      }
+    ],
+    "colorMeta": {
+      "pitch-blue": {
+        "displayName": "Pitch blue",
+        "role": "primary",
+        "tonalRamp": [
+          "oklch(15% 0.22 260)",
+          "oklch(27% 0.22 260)",
+          "oklch(38% 0.22 260)",
+          "oklch(49% 0.22 260)",
+          "oklch(61% 0.22 260)",
+          "oklch(72% 0.22 260)",
+          "oklch(84% 0.22 260)",
+          "oklch(95% 0.22 260)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "pitch-ink": {
+        "displayName": "Pitch ink",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.03 250)",
+          "oklch(27% 0.03 250)",
+          "oklch(38% 0.03 250)",
+          "oklch(49% 0.03 250)",
+          "oklch(61% 0.03 250)",
+          "oklch(72% 0.03 250)",
+          "oklch(84% 0.03 250)",
+          "oklch(95% 0.03 250)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "pitch-paper": {
+        "displayName": "Pitch paper",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.008 95)",
+          "oklch(27% 0.008 95)",
+          "oklch(38% 0.008 95)",
+          "oklch(49% 0.008 95)",
+          "oklch(61% 0.008 95)",
+          "oklch(72% 0.008 95)",
+          "oklch(84% 0.008 95)",
+          "oklch(95% 0.008 95)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "night": {
+        "displayName": "Night",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.065 260)",
+          "oklch(27% 0.065 260)",
+          "oklch(38% 0.065 260)",
+          "oklch(49% 0.065 260)",
+          "oklch(61% 0.065 260)",
+          "oklch(72% 0.065 260)",
+          "oklch(84% 0.065 260)",
+          "oklch(95% 0.065 260)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "planner-blue": {
+        "displayName": "Planner blue",
+        "role": "primary",
+        "tonalRamp": [
+          "oklch(15% 0.2 258)",
+          "oklch(27% 0.2 258)",
+          "oklch(38% 0.2 258)",
+          "oklch(49% 0.2 258)",
+          "oklch(61% 0.2 258)",
+          "oklch(72% 0.2 258)",
+          "oklch(84% 0.2 258)",
+          "oklch(95% 0.2 258)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "planner-ink": {
+        "displayName": "Planner ink",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.05 250)",
+          "oklch(27% 0.05 250)",
+          "oklch(38% 0.05 250)",
+          "oklch(49% 0.05 250)",
+          "oklch(61% 0.05 250)",
+          "oklch(72% 0.05 250)",
+          "oklch(84% 0.05 250)",
+          "oklch(95% 0.05 250)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "planner-paper": {
+        "displayName": "Planner paper",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.009 105)",
+          "oklch(27% 0.009 105)",
+          "oklch(38% 0.009 105)",
+          "oklch(49% 0.009 105)",
+          "oklch(61% 0.009 105)",
+          "oklch(72% 0.009 105)",
+          "oklch(84% 0.009 105)",
+          "oklch(95% 0.009 105)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "planner-muted": {
+        "displayName": "Planner muted",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.03 250)",
+          "oklch(27% 0.03 250)",
+          "oklch(38% 0.03 250)",
+          "oklch(49% 0.03 250)",
+          "oklch(61% 0.03 250)",
+          "oklch(72% 0.03 250)",
+          "oklch(84% 0.03 250)",
+          "oklch(95% 0.03 250)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      },
+      "planner-line": {
+        "displayName": "Planner line",
+        "role": "neutral",
+        "tonalRamp": [
+          "oklch(15% 0.008 110)",
+          "oklch(27% 0.008 110)",
+          "oklch(38% 0.008 110)",
+          "oklch(49% 0.008 110)",
+          "oklch(61% 0.008 110)",
+          "oklch(72% 0.008 110)",
+          "oklch(84% 0.008 110)",
+          "oklch(95% 0.008 110)"
+        ],
+        "purpose": "Ramp synthesized for documentation preview; not an application token scale."
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Pitch primary",
+      "kind": "button",
+      "description": "Pitch primary extracted from the implemented interface.",
+      "html": "<button class=\"ds-pitch-primary\">Open ExitNow \u2192</button>",
+      "css": ".ds-pitch-primary{border:0;background:#075ef4;color:white;border-radius:99px;padding:15px 28px;font:500 17px Outfit,Arial,sans-serif;cursor:pointer;transition:background .2s,transform .2s}.ds-pitch-primary:hover{background:#004bc9;transform:translateY(-2px)}.ds-pitch-primary:focus-visible{outline:3px solid #0871ff;outline-offset:5px}",
+      "refersTo": "pitch-primary"
+    },
+    {
+      "name": "Pitch dark",
+      "kind": "button",
+      "description": "Pitch dark extracted from the implemented interface.",
+      "html": "<button class=\"ds-pitch-dark\">Open ExitNow \u2192</button>",
+      "css": ".ds-pitch-dark{border:0;background:#0b1521;color:white;border-radius:99px;padding:12px 25px;font:500 17px Outfit,Arial,sans-serif;cursor:pointer;transition:background .2s,transform .2s}.ds-pitch-dark:hover{background:#004bc9;transform:translateY(-2px)}.ds-pitch-dark:focus-visible{outline:3px solid #0871ff;outline-offset:5px}",
+      "refersTo": "pitch-dark"
+    },
+    {
+      "name": "Planner primary",
+      "kind": "button",
+      "description": "Planner primary extracted from the implemented interface.",
+      "html": "<button class=\"ds-planner-primary\">Open ExitNow \u2192</button>",
+      "css": ".ds-planner-primary{border:0;background:#075cdd;color:white;border-radius:10px;padding:17px 19px;font:500 15px Outfit,Arial,sans-serif;cursor:pointer;transition:background .2s,transform .2s}.ds-planner-primary:hover{background:#064fbb}.ds-planner-primary:focus-visible{outline:3px solid #075cdd;outline-offset:4px}",
+      "refersTo": "planner-primary"
+    },
+    {
+      "name": "Station field",
+      "kind": "input",
+      "description": "Station field extracted from the implemented interface.",
+      "html": "<label class=\"ds-label\">From<select class=\"ds-field\"><option>Times Sq\u201342 St</option><option>Union Square</option></select></label>",
+      "css": ".ds-label{display:grid;gap:8px;font:12px Outfit,Arial,sans-serif;color:#617080}.ds-field{border:1px solid #d7dbd9;background:white;color:#172c42;border-radius:10px;padding:15px 32px 15px 13px;font:15px Outfit,Arial,sans-serif}.ds-field:hover{border-color:#a2b7d2}.ds-field:focus-visible{outline:3px solid #075cdd;outline-offset:4px}"
+    },
+    {
+      "name": "Planner navigation",
+      "kind": "nav",
+      "description": "Planner navigation extracted from the implemented interface.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#trip\" aria-current=\"page\">Plan a trip</a><a href=\"#live\">Live arrivals</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;font:14px Outfit,Arial,sans-serif}.ds-nav a{color:#617080;text-decoration:none;padding:14px 0}.ds-nav a[aria-current],.ds-nav a:hover{color:#075cdd}.ds-nav a:focus-visible{outline:3px solid #075cdd;outline-offset:4px}"
+    },
+    {
+      "name": "Selected route",
+      "kind": "card",
+      "description": "Selected route extracted from the implemented interface.",
+      "html": "<button class=\"ds-route\" aria-pressed=\"true\"><span>A calmer ride</span><strong>28 min</strong></button>",
+      "css": ".ds-route{display:flex;justify-content:space-between;gap:35px;border:1px solid #075cdd;background:#edf3ff;border-radius:12px;padding:17px;color:#172c42;font:15px Outfit,Arial,sans-serif;cursor:pointer}.ds-route strong{font-size:27px;font-variant-numeric:tabular-nums}.ds-route:hover{background:#eef2f7}.ds-route:focus-visible{outline:3px solid #075cdd;outline-offset:4px}"
+    },
+    {
+      "name": "Transit badge",
+      "kind": "chip",
+      "description": "Transit badge extracted from the implemented interface.",
+      "html": "<span class=\"ds-line\">C</span>",
+      "css": ".ds-line{display:inline-grid;place-items:center;background:#075ef4;color:white;border-radius:50%;width:50px;height:50px;font:550 25px Outfit,Arial,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A clearer way through",
+    "overview": "A cinematic introduction and a calm transit workspace share warm neutral surfaces, dark navy text, electric blue actions, and Outfit typography. The introduction uses large editorial type and physical train depth; the planner uses compact, explicit controls and a dominant map. These are complementary densities within one identity.",
+    "keyCharacteristics": [
+      "Warm paper and blue transit accents.",
+      "Large, closely tracked pitch headlines.",
+      "Physical 3D imagery with a clear route into the application.",
+      "Compact, source-conscious planning controls."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve the separate pitch and planner destinations.",
+      "Do retain visible focus, selected states, source labels, and reduced-motion behavior.",
+      "Do keep the hero headline and primary action readable above the decorative train."
+    ],
+    "donts": [
+      "Don't turn illustrative crowding or messaging into live-data claims.",
+      "Don't apply the pitch\u2019s cinematic spacing to the working trip controls.",
+      "Don't substitute a flat train image for the normal interactive Three.js scene; reserve the still for WebGL failure."
+    ]
+  }
+}

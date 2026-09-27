@@ -1,0 +1,18 @@
+# Sponsor evidence
+
+Status recorded 2026-09-26. Implemented means source exists, tested means the noted checks ran, demonstrated means an actual provider operation was observed. Promotional credits do not prove product entitlement. Hackathon judging criteria remain unverified where no accessible official challenge text was inspected.
+
+| Integration | Source / verified capability | Feature and files | Demonstrated operation / evidence | Environment and status |
+|---|---|---|---|---|
+| MongoDB | [Node transactions](https://www.mongodb.com/docs/drivers/node/current/crud/transactions/) | `packages/storage`, gateway MongoStore, Rider Rewards Mongo repository, `apps/gateway/src/verify-mongo.ts` | Actual transaction and synthetic ingestion/aggregate passed: 8 events, mean excess wait 7 minutes. Receipt: `artifacts/mongodb-verification.json` | Selected database; implemented and database operation demonstrated; 50 automated tests passed; Atlas challenge eligibility unverified |
+| Grok Bot | [Work](https://cursor.com/docs/grok-bot/work), [Routines](https://cursor.com/help/grok-bot/routines) | `apps/gateway/src/providers.ts`, `docs/grok-bot.md` | Local app created ExitNow and reported saved webhook entitlement probe; webhook runtime not demonstrated | Account routine creation observed; credentials configured; callback/live journey pending |
+| Photon | [Cloud iMessage](https://photon.codes/docs/spectrum-ts/providers/imessage) | `apps/gateway/src/providers.ts` | Project authentication, active Pro shared pool, and SDK initialization verified; actual delivery pending. See `artifacts/connectivity-verification.json` | Shared-pool access and SDK connection demonstrated; actual message delivery pending |
+| Gemini | [Structured output](https://ai.google.dev/gemini-api/docs/structured-output) | `packages/planning`, `/api/assumptions` | Source-quote validation tested; actual API extraction pending | Blocked on configuration |
+| Solana | [Circle official devnet USDC mint](https://developers.circle.com/stablecoins/usdc-contract-addresses), [token transfers](https://solana.com/docs/tokens/basics/transfer-tokens) | `packages/rewards`, `/api/rewards` | Contributor payout ledger, signed wallet binding, TransferChecked adapter, finalized receipt validation, and crash/ambiguity tests; no actual transfer | Devnet test USDC only. Live payout explicitly blocked on developer-funded signer; no MTA or Solana funding implied |
+| DigitalOcean | Deployment target from brief | `Dockerfile`, `README.md` | No deployment performed | Prepared locally; account deployment pending |
+| Nessie / XRPL / ElevenLabs | Not evaluated beyond brief | No claimed implementation | None | Unimplemented |
+| DeepSpace / Backboard / .Tech | Challenge criteria not verified | No claimed integration | None | Unverified |
+
+MongoDB replaces the previously planned database sponsor. No database prize eligibility is claimed merely because its driver is installed. Route and scenario fixtures remain clearly synthetic; MongoDB verification does not turn them into observed riders.
+
+Rider Rewards local demo: `artifacts/rider-rewards-demo.json` exercises the gateway's scoped tool path with scripted transport and simulated transit/moderator evidence. It is not evidence of live Photon delivery, Grok Bot execution, or a Solana transfer. Existing database sponsor evidence is historical; the new reward ledger also passed isolated real MongoDB concurrency and restart verification (`artifacts/rewards-mongodb-verification.json`), with simulated funding and RPC outcomes. Tiger Data is not present in this checkout; existing MongoDB ingestion has been preserved rather than claiming a missing integration.

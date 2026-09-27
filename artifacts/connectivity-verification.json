@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-09-26T20:51:51.393432+00:00",
+  "photon": {
+    "projectAuthentication": "passed",
+    "subscription": "pro",
+    "subscriptionStatus": "active",
+    "lineType": "shared",
+    "sdkInitialization": "passed",
+    "messagesSent": 0,
+    "deliveryVerified": false,
+    "outboundTest": {
+      "status": "rejected",
+      "providerError": "Target not allowed for this project",
+      "requiredAction": "Register test recipient in Photon project Users tab"
+    }
+  },
+  "gateway": {
+    "url": "https://inculpatory-lionel-irksome.ngrok-free.dev",
+    "httpsHealthStatus": 200,
+    "mode": "live",
+    "durable": true,
+    "hosting": "Temporary ngrok tunnel to local persistent process; computer must remain awake"
+  },
+  "grokCallback": "not yet demonstrated"
+}

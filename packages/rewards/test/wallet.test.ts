@@ -1,0 +1,9 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {generateKeyPairSync,sign} from 'node:crypto';
+import bs58 from 'bs58';
+import {WalletService} from '../src/wallet.js';
+const fixture=()=>{const state:any={wallets:{},nonces:{},payouts:{}};return {state,repo:{transact:async(fn:any)=>fn(state)}}};
+const key=()=>{const pair=generateKeyPairSync('ed25519');return {...pair,address:bs58.encode(pair.publicKey.export({format:'der',type:'spki'}).subarray(-32))}};
+test('wallet ownership is expiring, single-use and domain scoped',async()=>{const {repo}=fixture();const service=new WalletService(repo,'https://exitnow.test');const pair=key();const nonce=await service.challenge('a',pair.address,100);assert.match(nonce.message,/https:\/\/exitnow.test/);const sig=bs58.encode(sign(null,Buffer.from(nonce.message),pair.privateKey));assert.equal((await service.bind('a',nonce.id,sig,101)).address,pair.address);await assert.rejects(()=>service.bind('a',nonce.id,sig,102),/nonce/);const expired=await service.challenge('a',pair.address,200);await assert.rejects(()=>service.bind('a',expired.id,sig,1_000_000),/expired/)});
+test('wrong signature and account rejected; wallet changes obey cooldown',async()=>{const {repo}=fixture();const service=new WalletService(repo,'https://exitnow.test');const pair=key();const other=key();const nonce=await service.challenge('a',pair.address,100);await assert.rejects(()=>service.bind('b',nonce.id,bs58.encode(sign(null,Buffer.from(nonce.message),pair.privateKey)),101),/nonce/);await assert.rejects(()=>service.bind('a',nonce.id,bs58.encode(sign(null,Buffer.from(nonce.message),other.privateKey)),101),/signature/);await service.bind('a',nonce.id,bs58.encode(sign(null,Buffer.from(nonce.message),pair.privateKey)),101);await assert.rejects(()=>service.challenge('a',other.address,102),/cooldown/)});

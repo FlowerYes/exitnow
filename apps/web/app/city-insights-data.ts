@@ -1,0 +1,19 @@
+/** Deterministic demonstration scenarios. Not MTA observations or forecasts. */
+export type Period = 'peak' | 'offpeak' | 'weekend';
+export const periods: Record<Period, { label: string; hours: string }> = {
+  peak: { label: 'Weekday peak', hours: 'Weekdays · 7–10 am' },
+  offpeak: { label: 'Off-peak', hours: 'Weekdays · 11 am–3 pm' },
+  weekend: { label: 'Weekend', hours: 'Saturday · 12–4 pm' },
+};
+export const stations = [
+  { id: 'times', name: 'Times Sq–42 St', borough: 'Manhattan', lines: ['1', '2', '3', 'N', 'Q', 'R', '7'], issue: 'Transfer passages', detail: 'In this scenario, crossing flows between platforms slow the transfer passage.', idea: 'Make the transfer easier to read.', action: 'Trial directional floor markings and place wayfinding before the passage narrows. Compare transfer times before and after a two-week pilot.', owner: 'Station design + operations', delay: [4.8, 2.1, 3.6], riders: [18200, 9600, 14100], reduction: 0.24 },
+  { id: 'grand', name: 'Grand Central–42 St', borough: 'Manhattan', lines: ['4', '5', '6', '7', 'S'], issue: 'Platform crowding', detail: 'In this scenario, arrivals concentrate near the busiest platform stairs.', idea: 'Spread the boarding demand.', action: 'Trial platform position guidance at the mezzanine and staff the busiest stair landing during the morning peak.', owner: 'Passenger experience', delay: [4.2, 1.7, 2.4], riders: [16700, 8100, 9800], reduction: 0.2 },
+  { id: 'jackson', name: 'Jackson Hts–Roosevelt Av', borough: 'Queens', lines: ['E', 'F', 'M', 'R', '7'], issue: 'Vertical circulation', detail: 'In this scenario, opposing transfer flows meet at a shared stair landing.', idea: 'Give transfers more breathing room.', action: 'Test staff-guided circulation at the landing, keeping accessible paths clear. Measure queue length and missed connections.', owner: 'Station operations', delay: [3.9, 1.8, 2.9], riders: [11400, 6200, 8900], reduction: 0.18 },
+  { id: 'atlantic', name: 'Atlantic Av–Barclays Ctr', borough: 'Brooklyn', lines: ['2', '3', '4', '5', 'B', 'D', 'N', 'Q', 'R'], issue: 'Uneven boarding', detail: 'In this scenario, riders cluster near platform entrances while farther cars have space.', idea: 'Use the whole platform.', action: 'Pilot car-position signs and boarding prompts. Observe whether passenger distribution improves without obstructing circulation.', owner: 'Passenger experience', delay: [3.2, 1.4, 3.4], riders: [10200, 5300, 12100], reduction: 0.22 },
+  { id: 'union', name: '14 St–Union Sq', borough: 'Manhattan', lines: ['4', '5', '6', 'L', 'N', 'Q', 'R'], issue: 'Transfer crossings', detail: 'In this scenario, transfer movements and exiting passengers share a constrained passage.', idea: 'Separate the decision points.', action: 'Move exit and transfer guidance upstream so passengers choose a direction before reaching the junction.', owner: 'Wayfinding + design', delay: [3.5, 1.9, 3.1], riders: [12800, 7400, 10600], reduction: 0.16 },
+  { id: 'fordham', name: 'Fordham Rd · B / D', borough: 'Bronx', lines: ['B', 'D'], issue: 'Entrance queues', detail: 'In this scenario, short bursts of demand create queues at the main entrance.', idea: 'Smooth the entrance flow.', action: 'Trial clearer entrance guidance and queue management during demand surges. Audit step-free access separately before any permanent change.', owner: 'Station operations', delay: [2.6, 1.2, 2.0], riders: [5400, 2800, 4100], reduction: 0.15 },
+] as const;
+export function getScenario(period: Period) {
+  const index = ({ peak: 0, offpeak: 1, weekend: 2 } as const)[period];
+  return stations.map(station => ({ ...station, delayMinutes: station.delay[index], ridersPerHour: station.riders[index], savedMinutes: Math.round(station.delay[index] * station.reduction * 10) / 10 })).sort((a, b) => b.delayMinutes - a.delayMinutes);
+}

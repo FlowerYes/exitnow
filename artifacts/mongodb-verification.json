@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-09-26T20:48:13.171243+00:00",
+  "command": "npm run verify:mongo",
+  "status": "passed",
+  "checks": [
+    "connection authentication",
+    "gateway state initialization",
+    "MongoDB transaction commit",
+    "idempotent synthetic observation ingestion",
+    "time-window aggregation with minimum cohort 5"
+  ],
+  "result": {
+    "sampleSize": 8,
+    "meanExcessWaitMinutes": 7,
+    "sampleStandardDeviation": 2.6186146828319083
+  },
+  "evidenceType": "synthetic",
+  "containsRealRiderObservations": false
+}

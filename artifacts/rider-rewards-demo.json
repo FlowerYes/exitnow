@@ -1,0 +1,60 @@
+{
+  "mode": "local integration fixture",
+  "transport": "Photon/Grok Bot replaced by scripted scoped tool calls; no actual iMessage sent",
+  "transit": "Simulated elevator condition and moderator evidence",
+  "funding": "In-memory simulated 5 test USDC campaign, never advertised by live runtime",
+  "quote": {
+    "taskId": "f8e3ce70-aa98-4a58-87c4-364368333734",
+    "funded": true,
+    "provisionalAmount": 600000,
+    "reason": "Reserved provisional reward; verification required",
+    "expiresAt": 1790462294244,
+    "calculation": {
+      "formulaVersion": "coverage-v1",
+      "coverage": 0,
+      "target": 3,
+      "baseReward": 500000,
+      "gapNumerator": 3,
+      "gapDenominator": 3,
+      "bounty": 1000000,
+      "slots": [
+        600000,
+        200000,
+        200000
+      ]
+    },
+    "status": "prepared",
+    "network": "devnet",
+    "currency": "test USDC",
+    "tokenDecimals": 6,
+    "message": "You could earn 0.60 test USDC if this report passes verification. This is pending, not earned."
+  },
+  "blindAssignment": {
+    "taskId": "f8e3ce70-aa98-4a58-87c4-364368333734",
+    "target": {
+      "station": "columbia",
+      "category": "elevator_status",
+      "asset": "fixture-elevator-1"
+    },
+    "slot": 1,
+    "amount": 200000,
+    "expiresAt": 1790462294244,
+    "prompt": "What is the current condition? Report your own observation without consulting other reports.",
+    "warning": "Check only if you are already passing through this station. Do not make a special trip, enter restricted areas, or photograph strangers."
+  },
+  "earnedUnits": 800000,
+  "accounting": {
+    "allocatedFunding": 5000000,
+    "activeReservations": 200000,
+    "committedUnpaid": 800000,
+    "settled": 0,
+    "totalCommitted": 1000000
+  },
+  "guidanceChanged": true,
+  "duplicateAdditionalReward": 0,
+  "payout": {
+    "status": "blocked",
+    "reason": "No funded devnet signer configured. No transaction submitted and no explorer receipt fabricated."
+  },
+  "verification": "All assertions passed"
+}

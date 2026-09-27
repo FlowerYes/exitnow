@@ -1,0 +1,30 @@
+/** Labeled local integration demonstration: real Bridge/domain/ledger, simulated transport and transit evidence. */
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {Bridge} from '../apps/gateway/src/service.ts';
+import {ReplayStore} from '../apps/gateway/src/store.ts';
+import {claim} from '../apps/gateway/src/state.ts';
+import {RewardsService,MemoryRewardsRepository} from '../packages/rewards/src/index.ts';
+const repo=new MemoryRewardsRepository(),rewards=new RewardsService(repo,{allocatedFunding:5_000_000}),store=new ReplayStore();
+const bridge=new Bridge(store,{async send(){}},async()=>{},async()=>rewards);
+const now=Date.now(),observation={station:'columbia',category:'elevator_status' as const,asset:'fixture-elevator-1',condition:'working',observedAt:now};
+async function message(sender:string,text:string){await bridge.receive({eventId:crypto.randomUUID(),tripId:sender,spaceId:'fixture:'+sender,sender,text,timestamp:Date.now()});return store.transaction(s=>claim(s)!)}
+const rider=await message('demo-rider','The elevator at Columbia is working again.');
+const quote=await bridge.tool(rider.id,rider.token,'prepare_observation',observation) as {taskId:string;provisionalAmount:number;calculation:unknown};
+assert.equal(quote.provisionalAmount,600_000);
+const submission=await bridge.tool(rider.id,rider.token,'submit_observation',{}) as {report:{id:string}};
+assert.equal((await rewards.snapshot()).claimableBalance,0);
+await bridge.tool(rider.id,rider.token,'complete_job',{text:'Report received. You could earn 0.60 test USDC if verified. This is a local fixture.'});
+const checker=await message('demo-checker','Already at Columbia. Is there a useful check?');
+const assignment=await bridge.tool(checker.id,checker.token,'request_independent_check',{station:'columbia'}) as {taskId:string;amount:number};
+assert.equal(JSON.stringify(assignment).includes('working'),false);
+await bridge.tool(checker.id,checker.token,'prepare_observation',{...observation,taskId:assignment.taskId});
+const check=await bridge.tool(checker.id,checker.token,'submit_observation',{}) as {report:{id:string}};
+for(const reportId of [submission.report.id,check.report.id])await rewards.review(reportId,{...observation,kind:'moderator',reviewerId:'fixture-moderator',reference:'fixture:simulated-elevator-inspection',decision:'accept',reason:'Simulated moderator review for local demo. Not a live transit observation.'});
+const plan=await bridge.tool(checker.id,checker.token,'plan_route',{origin:'columbia',destination:'williamsburg',departureTime:'2026-09-26T22:00:00Z'}) as {warnings:string[]};
+assert.ok(plan.warnings.some(w=>w.includes('working')));
+const duplicate=await rewards.submitReport(observation,{accountId:'photon:demo-rider',groupId:'photon:demo-rider'});
+assert.equal(duplicate.provisionalAmount,0);
+const snapshot=await rewards.snapshot();assert.equal(snapshot.earnedBalance,800_000);assert.ok(snapshot.accounting.totalCommitted<=5_000_000);
+const evidence={mode:'local integration fixture',transport:'Photon/Grok Bot replaced by scripted scoped tool calls; no actual iMessage sent',transit:'Simulated elevator condition and moderator evidence',funding:'In-memory simulated 5 test USDC campaign, never advertised by live runtime',quote,blindAssignment:assignment,earnedUnits:snapshot.earnedBalance,accounting:snapshot.accounting,guidanceChanged:snapshot.reports.some(r=>r.guidanceChanged),duplicateAdditionalReward:duplicate.provisionalAmount,payout:{status:'blocked',reason:'No funded devnet signer configured. No transaction submitted and no explorer receipt fabricated.'},verification:'All assertions passed'};
+await mkdir('artifacts',{recursive:true});await writeFile('artifacts/rider-rewards-demo.json',JSON.stringify(evidence,null,2)+'\n');console.log(JSON.stringify(evidence,null,2));

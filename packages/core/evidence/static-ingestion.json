@@ -1,0 +1,10 @@
+{
+  "operation": "official_supplemented_gtfs_ingestion",
+  "status": "demonstrated",
+  "source": "https://rrgtfsfeeds.s3.amazonaws.com/gtfs_supplemented.zip",
+  "retrievedAt": "2026-09-26T19:37:11.457Z",
+  "lastModified": "Sat, 26 Sep 2026 19:24:49 GMT",
+  "sha256": "fb34bcf01e61961a6b87168ebe3a5d55f079823860a8b191bb1923dee07324b3",
+  "counts": {"stops":1488,"trips":76819,"stopTimes":2296420,"calendar":16,"calendarDates":67,"transfers":613},
+  "limitations": ["No gateway live-routing integration", "No live realtime retrieval demonstrated", "Full-network route validation remains outstanding"]
+}

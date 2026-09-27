@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+var/
+playwright-report/
+test-results/
+.data/
+
+# Isolated local validation builds
+.next-preview/
+.next-check/
+
+# Local scratch and macOS metadata
+.tmp/
+.DS_Store

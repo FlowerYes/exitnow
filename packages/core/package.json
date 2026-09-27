@@ -1,0 +1,1 @@
+{"name": "@exitnow/core", "version": "0.1.0", "private": true, "type": "module", "exports": {".": "./src/index.ts", "./ingest": "./src/ingest.ts", "./realtime": "./src/realtime.ts"}, "scripts": {"test": "tsx --test test/*.test.ts"}, "dependencies": {"protobufjs": "^7.6.6"}}

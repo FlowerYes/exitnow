@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-27T00:07:31.075371+00:00",
+  "productionBuild": "passed",
+  "regressionTests": {
+    "passed": 105,
+    "failed": 0
+  },
+  "browser": {
+    "realOsmTiles": true,
+    "realMtaJourney": "Columbia to Times Square, HTTP 200 and rendered itinerary",
+    "authenticatedRewards": "HTTP 200, real Mongo, empty smoke-test account",
+    "mobileViewport": 390,
+    "mobileScrollWidth": 390
+  },
+  "signer": {
+    "purpose": "backend devnet payout only",
+    "usdcBaseUnits": 20000000,
+    "solLamports": 0
+  },
+  "livePayout": "blocked: devnet SOL faucet CAPTCHA awaits user action/confirmation",
+  "liveMessaging": "Not re-exercised. Historical outbox contains an uncertain delivery; do not resend blindly. Confirm registered consenting rider and current Grok routine."
+}

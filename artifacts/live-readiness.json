@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-09-26T23:48:06.304953+00:00",
+  "readOnly": true,
+  "gateway": {
+    "configuredHttpsHealth": 200,
+    "localhostHealth": 200,
+    "mode": "live",
+    "healthLimitation": "Health response does not prove worker code revision or Grok callback readiness."
+  },
+  "photon": {
+    "projectAuthentication": "passed",
+    "imessageAllocation": "shared",
+    "subscription": "pro",
+    "subscriptionStatus": "active",
+    "messagesSentByThisAudit": 0,
+    "previousRecordedOutboundBlocker": "Target not allowed for this project; register consenting test rider in project Users tab. Current registration not verified."
+  },
+  "mongo": {
+    "read": "passed",
+    "jobStatuses": {
+      "completed": 1
+    },
+    "outboxStatuses": {
+      "uncertain": 1,
+      "sent": 1
+    },
+    "lastJobAt": "2026-09-26T21:00:04.140Z",
+    "limitation": "Historical aggregate state does not establish this task performed a live report, reward verification, or payout."
+  },
+  "configured": [
+    "SPECTRUM_PROJECT_ID",
+    "SPECTRUM_PROJECT_SECRET",
+    "GROK_BOT_WEBHOOK_URL",
+    "GROK_BOT_WEBHOOK_KEY",
+    "GATEWAY_PUBLIC_URL",
+    "MONGODB_URI",
+    "MONGODB_DB"
+  ],
+  "missing": [
+    "GATEWAY_OPERATOR_SECRET",
+    "REWARDS_SESSION_SECRET",
+    "REWARDS_MODERATOR_TOKEN",
+    "REWARDS_WEB_ORIGIN",
+    "SOLANA_SECRET_KEY",
+    "REWARDS_CAMPAIGN_UNITS",
+    "REWARDS_DAILY_UNITS",
+    "REWARDS_STATION_UNITS",
+    "REWARDS_CATEGORY_UNITS",
+    "REWARDS_FEE_BUDGET_LAMPORTS"
+  ],
+  "grok": {
+    "callableRoutineManagementToolFound": false,
+    "webhookTriggeredByThisAudit": false,
+    "routineInstructionsAndPermissions": "not inspected in entitled account",
+    "officialRoutineDocs": "https://cursor.com/help/grok-bot/routines",
+    "requirement": "Saved active routine, updated reward tool instructions and reachable tool client; actual run history and complete_job callback needed. HTTP 200 means run started only."
+  },
+  "wallet": {
+    "keypairAccessed": false,
+    "signed": false,
+    "transfers": 0
+  },
+  "nextActions": [
+    "Confirm provided wallet role and devnet-only use, then check public devnet SOL/official USDC balance without exposing private key.",
+    "Configure missing rewards secrets, exact web origin, explicit funded campaign and fee budget consistently for web and gateway.",
+    "Verify active Grok routine contains current reward instructions and can call the gateway tools.",
+    "Use a consenting allowlisted test rider for an actual inbound fresh observation; verify callback and device delivery.",
+    "Complete independent verification and wallet ownership flow before aggregate payout; record a finalized transaction only after actual submission.",
+    "Reconcile historical uncertain outbox entry manually, never automatically resend."
+  ]
+}

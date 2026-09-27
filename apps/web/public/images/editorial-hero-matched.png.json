@@ -1,0 +1,4 @@
+{
+  "origin": "Imagegen edit of docs/design/editorial/hero.png",
+  "prompt": "Remove website UI overlays, logo, navigation, headline, subtitle, buttons and caption. Reconstruct the subway photograph behind overlays. Preserve original side-on train, left-side commuter, framing and tone. Photo only; HTML supplies accessible text and links."
+}

@@ -1,0 +1,3 @@
+const print=console.log.bind(console);console.log=()=>{};console.warn=()=>{};console.error=()=>{};
+const timer=setTimeout(()=>{print(JSON.stringify({connected:false,error:'SDK connection timed out'}));process.exit(1)},25000);
+try{const {Spectrum}=await import('spectrum-ts');const {imessage}=await import('spectrum-ts/providers/imessage');const app=await Spectrum({projectId:process.env.SPECTRUM_PROJECT_ID,projectSecret:process.env.SPECTRUM_PROJECT_SECRET,providers:[imessage.config()],telemetry:false});print(JSON.stringify({connected:true,messagesSent:0,streamConsumed:false}));await app.stop();clearTimeout(timer);process.exit(0)}catch(e){clearTimeout(timer);print(JSON.stringify({connected:false,errorClass:e?.name,code:e?.code,status:e?.status}));process.exit(1)}

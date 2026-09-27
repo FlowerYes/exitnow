@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {writeFile} from 'node:fs/promises';
+const base=process.env.APP_URL||'http://127.0.0.1:3000';
+const boardResponse=await fetch(`${base}/api/transit?station=queens`);
+assert.equal(boardResponse.status,200);
+const board=await boardResponse.json();
+assert.ok(board.feeds.some(f=>!f.stale),'At least one official feed must be fresh');
+assert.ok(board.arrivals.length,'Expected upcoming MTA arrivals at Court Sq');
+const response=await fetch(`${base}/api/transit`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({origin:'columbia',destination:'times-square',departureTime:new Date().toISOString()})});
+const result=await response.json();
+assert.equal(response.status,200,JSON.stringify(result));
+assert.equal(result.plan.freshness.mode,'live');
+assert.ok(result.plan.recommended.legs.every(l=>l.continuationId),'Trips must have actual feed identities');
+const invalid=await fetch(`${base}/api/transit?station=not-a-station`);
+assert.equal(invalid.status,400);
+const receipt={verifiedAt:new Date().toISOString(),source:'Official MTA GTFS-Realtime via local web API',station:board.station,arrivalCount:board.arrivals.length,feeds:board.feeds,journey:result.plan,invalidStationStatus:invalid.status};
+await writeFile('artifacts/mta-verification.json',JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({verifiedAt:receipt.verifiedAt,freshFeeds:board.feeds.filter(f=>!f.stale).length,arrivals:board.arrivals.length,journey:result.plan.recommended.nextInstruction}));
